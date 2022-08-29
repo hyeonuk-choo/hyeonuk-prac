@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Delete = () => {
   const [text, setText] = useState("");
-  const [todo, setTodo] = useState([
-    {
-      id: 1,
-      title: "제목1",
-      isDone: false,
-    },
-  ]);
+  const [todo, setTodo] = useState([]);
   const [edit, setEdit] = useState(false);
+  const nextId = useRef(1);
 
   const onClickAddHandler = () => {
-    setTodo([...todo, { id: todo.length + 1, title: text, isDone: false }]);
+    nextId.current += 1;
+    setTodo([...todo, { id: nextId.current, title: text, isDone: false }]);
   };
 
   const onClickDeleteHandler = (id) => {

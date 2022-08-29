@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 
 const Add = () => {
-  let array = [];
   const [text, setText] = useState("");
+  const [todo, setTodo] = useState([
+    {
+      id: 1,
+      text: "",
+    },
+  ]);
+
   const onChangeAddHandler = (e) => {
     setText(e.target.value);
   };
+
   const onClickAddHandler = () => {
-    array.push(text);
-    console.log(array);
+    setTodo([...todo, { id: todo.length + 1, text: text }]);
   };
+  console.log(todo);
 
   return (
     <div>
-      <input onChange={onChangeAddHandler}></input>
+      <input type="text" value={text} onChange={onChangeAddHandler} />
       <button onClick={onClickAddHandler}>추가</button>
       <ul>
-        {array.map((item) => {
-          return <li>{item}</li>;
-        })}
+        {todo.map((item) => (
+          <li key={item.id}>{item.text}</li>
+        ))}
       </ul>
     </div>
   );

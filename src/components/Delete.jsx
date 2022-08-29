@@ -20,15 +20,16 @@ const Delete = () => {
   };
 
   const onClickEditHandler = (id) => {
-    let newTodo = todo.map((each) => {
-      if (each.id == id) {
+    const newTodo = todo.map((each) => {
+      if (each.id === id) {
         each.isDone = !each.isDone;
       }
-      return todo;
+      return each;
     });
+    console.log("newTodo", newTodo);
     setTodo(newTodo);
   };
-
+  console.log("todo", todo);
   return (
     <div>
       <div>
@@ -36,31 +37,20 @@ const Delete = () => {
         <button onClick={onClickAddHandler}>추가</button>
       </div>
 
-      {todo.map((each) => {
-        if (each.isDone == false) {
-          return (
-            <div key={each.id}>
-              <div>{each.title}</div>
-              <button onClick={() => onClickDeleteHandler(each.id)}>
-                삭제
-              </button>
-              <button onClick={() => onClickEditHandler(each.id)}>완료</button>
-            </div>
-          );
-        } else {
-          return (
-            <div key={each.id}>
-              <div>{each.title}</div>
-              <button onClick={() => onClickDeleteHandler(each.id)}>
-                삭제
-              </button>
-              <button onClick={() => onClickEditHandler(each.id)}>
-                완료취소
-              </button>
-            </div>
-          );
-        }
-      })}
+      {todo.map((each) => (
+        <div key={each.id}>
+          <div>{each.title}</div>
+          <button onClick={() => onClickDeleteHandler(each.id)}>삭제</button>
+
+          {each.isDone === true ? (
+            <button onClick={() => onClickEditHandler(each.id)}>
+              완료취소
+            </button>
+          ) : (
+            <button onClick={() => onClickEditHandler(each.id)}>완료</button>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

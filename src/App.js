@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
-import "./App.css";
 import Add from "./components/Add";
+import Delete from "./components/Delete";
+import DeletePrac from "./components/DeletePrac";
 
 function App() {
   return (
     <div className="App">
-      <Add></Add>
+      {/* <DeletePrac /> */}
+      <Delete />
     </div>
   );
 }

@@ -1,14 +1,12 @@
-import Add from "./components/Add";
-import Delete from "./components/Delete";
-import DeletePrac from "./components/DeletePrac";
+import React from "react";
+import InfiniteScroll from "./components/InfiniteScroll";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      {/* <DeletePrac /> */}
-      <Delete />
-    </div>
+    <>
+      <InfiniteScroll />
+    </>
   );
-}
+};
 
 export default App;
